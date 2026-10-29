@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>menu</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: SoDoSans, Helvetica Neue, Helvetica, Arial, sans-serif;
+        }
+
+        nav {
+            background-color: white;
+            display: flex;
+            height: 100px;
+            width: auto;
+            /* border: 2px solid red; */
+            justify-content: space-between;
+            align-items: center;
+            align-content: space-between;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-logo {
+            height: 50px;
+            width: 50px;
+            border-radius: 30px;
+            margin-right: 30px;
+            margin-left: 20px;
+        }
+
+        .nav-left {
+            display: flex;
+            /* padding: 10%; */
+            justify-content: space-between;
+            align-items: center;
+            align-content: space-between;
+            gap: 20px;
+            font-weight: 800;
+
+        }
+
+        .nav-right {
+            display: flex;
+
+        }
+
+        .nav-location {
+            margin-right: 10px;
+        }
+
+        .nav-btn1 {
+            margin-right: 10px;
+            border: 2px solid black;
+            border-radius: 25px;
+            height: fit-content;
+            width: 55px;
+            padding: 3%;
+        }
+
+        .nav-btn2 {
+            margin-right: 10px;
+            border: 2px solid black;
+            border-radius: 25px;
+            background-color: black;
+            color: white;
+            height: fit-content;
+            width: 75px;
+            padding: 3%;
+        }
+
+        .nav1{
+            height: 5vh;
+            display: flex;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 50px;
+            /* background-color: #f9f9f9; */
+            padding-top: 10px;
+
+            border-bottom: 1px solid #dbd9d7;
+            position: relative;
+            width: 100%;
+            z-index: inherit;
+        }
+
+        #n2{
+            margin-left: 9%;
+        }
+
+        .n1{
+            padding-top: 6px;
+
+        }
+
+        .parent{
+            display: flex;
+            width: 90%;
+            /* align-items: center; */
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .left-p{
+            width: 25%;
+            flex-wrap: wrap;
+        }
+
+        .heading1{
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .content{
+            color: gray;
+            font-size: 17px;
+            margin-bottom: 1rem;
+        }
+
+        .right-p{
+            width: 60%;
+            justify-content: space-around;
+        }
+
+        .heading2{
+            font-size: 25px;
+            font-weight: 850;
+            margin-bottom: 50px;
+        }
+
+        .heading3{
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .item-left,.item-right{
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .item-right{
+            width: 45%;
+        }
+        
+        
+        .item-image{
+            aspect-ratio: 1/1;
+            height: 125px;
+            width: 125px;
+            border-radius: 50%;
+            
+        }
+
+        .item-name{
+            font-size: 18px;
+            font-weight: 500;
+            padding-left: 20px;
+        }
+
+        .item-parent{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            width: 100%;
+            
+        }
+
+        .heading3-right{
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            margin-top: 30px;
+        }
+
+        footer {
+            display: flex;
+            flex-wrap: wrap;
+            height: max-content;
+            justify-content: space-evenly;
+            width: 90%;
+            margin-top: 100px;
+        }
+
+        .c1 {
+            color: black;
+            margin-bottom: 30px;
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        .c2 {
+            color: gray;
+            margin-bottom: 20px;
+        }
+
+        .left1{
+            justify-content: space-between;
+        }
+
+        hr{
+            margin-top: 30px;
+            margin-bottom: 30px;
+            color: gray;
+            width: 90%;
+            align-items: center;
+            align-content: center;
+        }
+       
+        #copy1{
+            margin-left: 80px;
+        }
+
+        .copyright{
+            display: flex;
+            gap: 15px;
+            font-size: 25px;
+        }
+    
+/* =====================================================
+   SCROLL ANIMATION EFFECTS
+   ===================================================== */
+
+/* Default reveal animation */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Left / Right reveal */
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-80px);
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(80px);
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Card reveal */
+.scroll-card {
+    opacity: 0;
+    transform: translateY(50px) scale(0.92);
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scroll-reveal.show,
+.reveal-left.show,
+.reveal-right.show,
+.scroll-card.show {
+    opacity: 1;
+    transform: translate(0) scale(1);
+}
+
+/* Stagger the cards */
+.scroll-card:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.scroll-card:nth-child(2) {
+    transition-delay: 0.18s;
+}
+
+.scroll-card:nth-child(3) {
+    transition-delay: 0.31s;
+}
+
+/* Card hover */
+.card1,
+.status-cards1,
+.status-cards2,
+.status-cards3,
+.links-box,
+.links-box1 {
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.card1:hover,
+.status-cards1:hover,
+.status-cards2:hover,
+.status-cards3:hover,
+.links-box:hover,
+.links-box1:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.14);
+}
+
+/* Hero image floating */
+.banner-image {
+    animation: heroFloat 4s ease-in-out infinite;
+}
+
+@keyframes heroFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .scroll-reveal,
+    .reveal-left,
+    .reveal-right,
+    .scroll-card {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+</style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM9PoxgSqHOJj2AZYiGy0a29sE7Da7KFaiCg&s"
+                class="nav-logo">
+            <div class="left1">
+                MENU
+            </div>
+            <div class="left1">
+                REWARDS
+            </div>
+            <div class="left1">
+                GIFT CARDS
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <div class="nav-location">
+                Find a store
+            </div>
+            <div class="nav-btn1">
+                sign in
+            </div>
+            <div class="nav-btn2">
+                join now
+            </div>
+        </div>
+    </nav>
+
+    <div class="nav1">
+        <div class="n1" id="n2" >Menu</div>
+        <div class="n1">Featured</div>
+        <div class="n1">Previous</div>
+        <div class="n1">favorites</div>
+    </div>
+
+    <div class="parent">
+        <div class="left-p">
+            <div class="heading1">
+                The Latest
+            </div>
+            <div class="content">
+                Trending
+            </div>
+            <div class="content">
+                Energy Refreshers
+            </div>
+
+            <div class="heading1">
+                Drinks
+            </div>
+            <div class="content">
+                Protein Beverages
+            </div>
+            <div class="content">
+                Hot Coffee
+            </div>
+            <div class="content">
+                Cold Coffee
+            </div>
+            <div class="content">
+                Chai
+            </div>
+            <div class="content">
+                Matcha
+            </div>
+            <div class="content">
+                Hot Tea
+            </div>
+            <div class="content">
+                Cold tea
+            </div>
+            <div class="content">
+                Refreshers
+            </div>
+            <div class="content">
+                Frappuccino® Blended Beverage
+            </div>
+            <div class="content">
+                Hot Chocolate, Lemonade & More
+            </div>
+            <div class="content">
+                Bottled Beverages
+            </div>
+
+            <div class="heading1">
+                Food
+            </div>
+            <div class="content">
+                Breakfast
+            </div>
+            <div class="content">
+                Bakery
+            </div>
+            <div class="content">
+                Treats
+            </div>
+            <div class="content">
+                Lunch
+            </div>
+            <div class="content">
+                LIte Bites
+            </div>
+
+            <div class="heading1">
+                At Home Coffee
+            </div>
+            <div class="content">
+                Whole Bean
+            </div>
+            <div class="content">
+                Starbucks VIA® Instant
+            </div>
+            <div class="content">
+                Shopping Bag
+            </div>
+        </div>
+            <!-- =========================================================================== -->
+            
+        <div class="right-p">
+                <div class="heading2">
+                    Menu
+                </div>
+
+                <div class="heading3">
+                    The Latest
+                </div>
+
+                <hr>
+                <div class="item-parent">
+                    <div class="item-left">
+                        <img src="https://imgs.search.brave.com/M4-5m7Q-nX6oHoTNoyhp1CVXzYn9gXFk6XgsgEpYVEk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9qZW5p/cy5jb20vY2RuL3No/b3AvZmlsZXMvUmVj/dGFuZ2xlXzc4Ml80/MDB4LmpwZz92PTE2/NDYwNzQyODY" class="item-image">
+                        <div class="item-name">
+                            Trending
+                        </div>
+                    </div>
+
+                    <div class="item-right">
+                        <img src="https://imgs.search.brave.com/4hTmclVAwsGw1KHUofZivfSPZgo28YWeMRyIXtJrzlo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jbG91/ZGFzc2V0cy5zdGFy/YnVja3MuY29tL2lz/L2ltYWdlL3NidXhj/b3JwL1Ryb3BpY2Fs/QnV0dGVyZmx5TGVt/b25hZGVSZWZyZXNo/ZXI_aW1wb2xpY3k9/MWJ5MV90aWdodF8y/ODgmY3JvcD00OTUs/NDk1LDgxMCw4MTAm/d2lkPTI4OCZoZWk9/Mjg4JnFsdD04NQ" class="item-image">
+                        <div class="item-name">
+                            Energy Refreshers
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================================================================== -->
+
+                <div class="heading3-right">
+                    Drink
+                </div>
+
+                <hr>
+
+                <div class="item-parent">
+                    <div class="item-left">
+                        <img src="https://imgs.search.brave.com/JZ1vAWeXfQKJP9yN17Ev1UC-37YCXRU4oppodVeyEo8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTQ3/MzUxMjI4NC9waG90/by9oZWFsdGh5LWNo/b2NvbGF0ZS1wcm90/ZWluLXNoYWtlLWRy/aW5rLXdpdGgtc3Ry/YXctYW5kLXByb3Rl/aW4tcG93ZGVyLmpw/Zz9zPTYxMng2MTIm/dz0wJms9MjAmYz1V/bGhsTWNyVTJWQjBY/S2dHVF9ISGp5MmZo/cEo4RHFYbmJITVRK/ZDM1X2h3PQ" class="item-image">
+                        <div class="item-name">
+                            Protein Beverages
+                        </div>
+                    </div>
+
+                    <div class="item-right">
+                        <img src="https://imgs.search.brave.com/K3j4_xSSFY4M2kir9jy5z9cNXFrn2I0COny7LTRoxKI/rs:fit:860:0:0:0/g:ce/aHR0cDovL2ltYWdl/LnNodXR0ZXJzdG9j/ay5jb20vZGlzcGxh/eV9waWNfd2l0aF9s/b2dvLzYzMjgzMC8x/MjYxNDU2OTcvc3Rv/Y2stcGhvdG8tY3Vw/LW9mLWNvZmZlZS1v/ci1ob3QtY2hvY29s/YXRlLTEyNjE0NTY5/Ny5qcGc" class="item-image">
+                        <div class="item-name">
+                            Hot Coffee 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-parent">
+                    <div class="item-left">
+                        <img src="https://imgs.search.brave.com/fVl3ROoj8KEkPVqoYBRJNUCYbepfwWJu4zTpgB6CPrw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bmF0YWxpZXNoZWFs/dGguY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDIyLzA1L0Nv/bGQtQnJldy1JY2Vk/LUNvZmZlZS1mZWF0/dXJlZC1pbWFnZS0z/NjB4MzYwLmpwZWc" class="item-image">
+                        <div class="item-name">
+                            Cold  coffee
+                        </div>
+                    </div>
+
+                    <div class="item-right">
+                        <img src="https://imgs.search.brave.com/6WTZ8urZnDb9jsh-2c2TbGhrn536_FBUvtv4RtPmRW4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wNjgv/NDk0LzY2NC9zbWFs/bC9zdGVhbWluZy1t/YXNhbGEtY2hhaS10/ZWEtaW4tY2VyYW1p/Yy1jdXAtd2l0aC1z/cGljZXMtb24td29v/ZGVuLXRhYmxlLXBo/b3RvLmpwZw" class="item-image">
+                        <div class="item-name">
+                            Chai
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-parent">
+                    <div class="item-left">
+                        <img src="https://imgs.search.brave.com/9Zr8ejR3By9eZQe-tNOeq4xgvtNOQUkJ6xVh4SPyPvQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NTFVQnZwMkpHekwu/anBn" class="item-image">
+                        <div class="item-name">
+                            Matcha
+                        </div>
+                    </div>
+
+                    <div class="item-right">
+                        <img src="https://imgs.search.brave.com/fXFRykAbnH3eFvDPhonlavWQVwjFf_EQ94cbjiUtvdA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTM5/MDg4Mjg4MS9waG90/by9jbG9zZS11cC10/ZWEtY3VwLW9uLXRh/YmxlLmpwZz9zPTYx/Mng2MTImdz0wJms9/MjAmYz10NFhOVWM5/Q25TYlZyVkJPS3Rp/Sjd5Rk96U3dxVnM1/Q3NOSVJSTzFndnlF/PQ" class="item-image">
+                        <div class="item-name">
+                            Hot Tea
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-parent">
+                    <div class="item-left">
+                        <img src="https://imgs.search.brave.com/cOiUKLmLZKjyKfUGN5N5WqlgzxJb0prhCj20w5ymecI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTI0/OTU3MjEyOS9waG90/by9nbGFzcy1vZi1j/b2xkLXRlYS13aXRo/LWljZS1jdWJlcy1v/dmVyLXdoaXRlLmpw/Zz9zPTYxMng2MTIm/dz0wJms9MjAmYz1q/NjdnYlhsTHNyYWxu/SzNjS1I5aHlFOXpL/Mm9TRVV1U1BwcVFT/V2RCUEswPQ" class="item-image">
+                        <div class="item-name">
+                            Cold Tea
+                        </div>
+                    </div>
+
+                    <div class="item-right">
+                        <img src="https://imgs.search.brave.com/Len7rImG6tIp9jM4c0ede4f-i25ExDhd20BrS4Oh_bk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jbG91/ZGFzc2V0cy5zdGFy/YnVja3MuY29tL2lz/L2ltYWdlL3NidXhj/b3JwL1Ryb3BpY2Fs/QnV0dGVyZmx5UmVm/cmVzaGVyP2ltcG9s/aWN5PTFieTFfdGln/aHRfMjg4JmNyb3A9/NDk1LDQ5NSw4MTAs/ODEwJndpZD0yODgm/aGVpPTI4OCZxbHQ9/ODU" class="item-image">
+                        <div class="item-name">
+                            Refresher 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-parent">
+                    <div class="item-left">
+                        <img src="https://imgs.search.brave.com/OVFbPF0pqrFUIkwjVFDY71GFgnRq4skdFl63adKE2us/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuZ29wdWZmLmNv/bS9ibG9iL2dvcHVm/ZmNhdGFsb2dzdG9y/YWdlcHJvZC9jYXRh/bG9nLWltYWdlcy1j/b250YWluZXIvcmVz/aXplL2NmL3ZlcnNp/b249MV8yLGZvcm1h/dD1hdXRvLGZpdD1z/Y2FsZS1kb3duLHdp/ZHRoPTgwMCxoZWln/aHQ9ODAwLzVjZWRm/OTAxLWExYzEtNGM4/ZS1hODRiLTdkYjZh/MGVlNTEzNy5wbmc" class="item-image">
+                        <div class="item-name">
+                             Frappuccino® Blended Beverage 
+                        </div>
+                    </div>
+
+                    <div class="item-right">
+                        <img src="https://imgs.search.brave.com/neA-x49esS8QXlGUoJEtEVevF0VeLtnIFHQMB61XTL8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jbG91/ZGFzc2V0cy5zdGFy/YnVja3MuY29tL2lz/L2ltYWdlL3NidXhj/b3JwL0hvdENob2Nv/bGF0ZT9pbXBvbGlj/eT0xYnkxX3dpZGVf/dG9wY3JvcF82MzAm/Y3JvcD0xODAsMzYw/LDE0NDAsMTQ0MCZ3/aWQ9NjMwJmhlaT02/MzAmcWx0PTg1" class="item-image">
+                        <div class="item-name">
+                            Hot Chocolate, Lemonade & More
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========================================================================================== -->
+                <div class="heading3-right">
+                    Food
+                </div>
+
+                <hr>
+
+                <div class="item-parent">
+                    <div class="item-left">
+                        <img src="https://img.cdn4dd.com/cdn-cgi/image/fit=contain,width=1200,height=672,format=auto/https://doordash-static.s3.amazonaws.com/media/photosV2/202b8630-9115-499e-b805-462fbad85d34-retina-large.jpg" class="item-image">
+                        <div class="item-name">
+                            Breakfast
+                        </div>
+                    </div>
+
+                    <div class="item-right">
+                        <img src="https://imgs.search.brave.com/SyGYq1IXhvLwjkIGwEgbQ5KfLilpviYy4k-gJzMeHes/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zZXRo/bHVpLmNvbS93cC1j/b250ZW50L3VwbG9h/ZHMvMjAyMC8wOS9T/dGFyYnVja3MtUGFz/dHJpZXMtNS5qcGc" class="item-image">
+                        <div class="item-name">
+                            Bakery 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-parent">
+                    <div class="item-left">
+                        <img src="https://imgs.search.brave.com/PoCXOZz1U0eRsbysPLchZyAKwhtEW8xVQ6EJnXRAekc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2MxLzYz/LzU1L2MxNjM1NWM3/ZWE5ZGY0ZjMxY2Mw/MzA0MTMyOTUzOTUy/LmpwZw" class="item-image">
+                        <div class="item-name">
+                            Treat
+                        </div>
+                    </div>
+
+                    <div class="item-right">
+                        <img src="https://imgs.search.brave.com/YKtMb4dlnoWcyaDR1R8RT6jhVDeg7_WWuyLAOFnI84c/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wcmV2/aWV3LnJlZGQuaXQv/bHVuY2gtdjAtNXV2/cXk0MGE1N3VnMS5q/cGVnP3dpZHRoPTY0/MCZjcm9wPXNtYXJ0/JmF1dG89d2VicCZz/PTI4MjkzY2Y1OGFk/MTRiZmI3ZTJhNDEx/ZTY0MTJjMTA0NzY1/ZGNiMzQ" class="item-image">
+                        <div class="item-name">
+                            Lunch
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-parent">
+                    <div class="item-left">
+                        <img src="https://imgs.search.brave.com/pg7TbcHGg9D-vbhGyQBhdxlU_pyX4RR5p2l4I5XXllA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/dGFzdGVvZmhvbWUu/Y29tL3dwLWNvbnRl/bnQvdXBsb2Fkcy8y/MDIyLzAzL0NvcHlj/YXQtU3RhcmJ1Y2tz/LUVnZy1CaXRlc19F/WFBTX1RPSEFNMjJf/MjQzNTg2X0IxMV8x/Nl81Yi5qcGc" class="item-image">
+                        <div class="item-name">
+                            Lite Bites
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================================ -->
+
+                <div class="heading3-right">
+                    At Home Coffee
+                </div>
+
+                <hr>
+
+
+                <div class="item-parent">
+                    <div class="item-left">
+                        <img src="https://imgs.search.brave.com/2KaEaWtbVKa4I_5-pRNNVw10RFBUpKOeSYDODSLHDEg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pNS53/YWxtYXJ0aW1hZ2Vz/LmNvbS9zZW8vU3Rh/cmJ1Y2tzLVdob2xl/LUJlYW4tQ29mZmVl/LU1lZGl1bS1Sb2Fz/dC1CcmVha2Zhc3Qt/QmxlbmQtMTItb3ot/UGFjay1vZi0yXzRm/MDExMjg2LTY1MWUt/NGMzNC1hZThmLTdh/YjI3MjgwNjUwYS4w/MzM3Zjk5YWJiYmIw/NjY4YTllNmZlMjkz/NzU4NzNmZC53ZWJw/P29kbkhlaWdodD01/NzYmb2RuV2lkdGg9/NTc2Jm9kbkJnPUZG/RkZGRg" class="item-image">
+                        <div class="item-name">
+                            Whole Bean
+                        </div>
+                    </div>
+
+                    <div class="item-right">
+                        <img src="https://imgs.search.brave.com/MSBV5r64hCFoURPAqA0yiABTsuHD3G9jSBkZ_4fPunA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMtbmEuc3NsLWlt/YWdlcy1hbWF6b24u/Y29tL2ltYWdlcy9J/LzcxSzlhclFIYkNM/LmpwZw" class="item-image">
+                        <div class="item-name">
+                            Starbuck VIA Instant 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item-parent">
+                    <div class="item-left">
+                        <img src="https://imgs.search.brave.com/bYAAdgf2QdNjbwU4F1iroNeDbTgQzV_6DvPaPy1nMN4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzQ4MjQyODcxL3Iv/aWwvZmVmNjU5Lzcw/MjgyNTQ3ODYvaWxf/MzAweDMwMC43MDI4/MjU0Nzg2X3Mzb20u/anBn" class="item-image">
+                        <div class="item-name">
+                            Shopping Bags
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+<footer class="scroll-reveal">
+    <div class="l1">
+        <div class="c1">About Us</div>
+        <div class="c2">Our Company</div>
+        <div class="c2">Our Coffee</div>
+        <div class="c2">About Starbucks</div>
+        <div class="c2">Startbucks Archive</div>
+        <div class="c2">Investor Relations</div>
+        <div class="c2">Customer Service</div>
+        <div class="c2">Contact Us</div>
+    </div>
+    <div class="l1">
+        <div class="c1">Careers</div>
+        <div class="c2">Culture and Values</div>
+        <div class="c2">Belonging at Starbucks</div>
+        <div class="c2">College Achievement Plan</div>
+        <div class="c2">Aluumni Community</div>
+        <div class="c2">U.S. Careers</div>
+        <div class="c2">International Careers</div>
+    </div>
+    <div class="l1">
+        <div class="c1">For Business Partners</div>
+        <div class="c2">Landlord Support Center</div>
+        <div class="c2">Suppliers</div>
+        <div class="c2">Corporate Gifts Card Sales</div>
+        <div class="c2">Office and Foodservice Coffee</div>
+    </div>
+    <div class="l1">
+        <div class="c1">Order and Pick Up</div>
+        <div class="c2">Order on the App</div>
+        <div class="c2">Order on the Web</div>
+        <div class="c2">Delivery</div>
+        <div class="c2">Order and Pick Up Options</div>
+        <div class="c2">Explore and Find Coffeee for home</div>
+    </div>
+</footer>
+
+<hr>
+
+<div class="copyright">
+    <i id="copy1" class="fa-brands fa-spotify" style="color: rgb(0, 0, 0);"></i>
+    <i  class="fa-brands fa-facebook" style="color: rgb(0,0, 0);"></i>
+    <i  class="fa-brands fa-pinterest" style="color: rgb(0, 0, 0);"></i>
+    <i  class="fa-brands fa-instagram" style="color: rgb(0, 0, 0);"></i>
+    <i  class="fa-brands fa-youtube" style="color: rgb(0, 0, 0);"></i>
+    <i  class="fa-brands fa-x-twitter" style="color: rgb(0, 0, 0);"></i>
+
+
+<script>
+/* =====================================================
+   SCROLL REVEAL JAVASCRIPT
+   ===================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const animatedItems = document.querySelectorAll(
+        ".scroll-reveal, .reveal-left, .reveal-right, .scroll-card"
+    );
+
+    const observer = new IntersectionObserver(
+        (entries, observer) => {
+
+            entries.forEach((entry) => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("show");
+
+                    // Animate only once
+                    observer.unobserve(entry.target);
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        }
+    );
+
+    animatedItems.forEach((item) => {
+        observer.observe(item);
+    });
+
+});
+</script>
+
+</body>
+
+</html>
